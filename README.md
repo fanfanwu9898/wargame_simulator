@@ -4,17 +4,17 @@
 ### Endpoint for run simulation of the card game
 Both endpoint are accessible using "GET" method
 ```sh
-http://54.201.247.15/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/noshowhistory
+http://54.201.247.15:8000/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/noshowhistory
 #or get result with the game history
-http://54.201.247.15/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/showhistory
+http://54.201.247.15:8000/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/showhistory
 ```
-Example without history (you can click it to experiment): http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/noshowhistory
+Example without history (you can click it to experiment): http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/noshowhistory
 <br>
 Return:
 ```sh
 {"winner": "Alex", "number_of_rounds": 117, "number_of_war_rounds": 7}
 ```
-Example with history (you can click it to run): http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory
+Example with history (you can click it to run): http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory
 <br>
 Return:
 ```sh
@@ -22,7 +22,7 @@ Return:
 {"winner": "Alex", "number_of_rounds": 735, "number_of_war_rounds": 41, "game_history": {"0": {"round_num": 0, "Alex": "black-clubs_5->black-clubs_2->black-clubs_A....", "Iris": "black-clubs_4->black-clubs_6->red-hearts_4->black-spades_8->red-diamonds_J->black-spades_k->red-hearts_k->red-diamonds ...}
 ```
 
-Example without history: http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory 
+Example without history: http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory 
 <br>
 Return:
 ```sh
@@ -31,9 +31,9 @@ Return:
 
 ### Endpoint to get lifetime wins for each player
 ```sh
-http://54.201.247.15/lifetimewin/v1/username/<str:player name>
+http://54.201.247.15:8000/lifetimewin/v1/username/<str:player name>
 ```
-Example: http://54.201.247.15/lifetimewin/v1/username/Iris
+Example: http://54.201.247.15:8000/lifetimewin/v1/username/Iris
 <br>
 Example Return:
 ```sh
@@ -43,7 +43,7 @@ Example Return:
 ## Additional APIs that I implemented
 ### Endpoint to run multiple game simulations
 ```sh
-http://54.201.247.15/simulations/v1/usernamex/<str:player name>/usernamey/<str:player name>/<int:number of simulation to run>
+http://54.201.247.15:8000/simulations/v1/usernamex/<str:player name>/usernamey/<str:player name>/<int:number of simulation to run>
 ```
 Example: http://54.201.247.15:8000/simulations/v1/usernamex/Alex/usernamey/Iris/10
 <br>
