@@ -1,5 +1,5 @@
 
-###RESTful Service
+### RESTful Service
 
 Endpoint for run simulation of the card game
 http://54.201.247.15/simulation/v1/usernamex/<int>/usernamey/<int>/
