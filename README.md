@@ -1,4 +1,3 @@
-# Aspen Capital Interview Project
 
 ## RESTful Endpoints
 ### Endpoint for run simulation of the card game
