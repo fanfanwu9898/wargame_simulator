@@ -9,18 +9,21 @@ http://54.201.247.15/simulation/v1/usernamex/<str:player name>/usernamey/<str:pl
 http://54.201.247.15/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/showhistory
 ```
 Example without history (you can click it to experiment): http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/noshowhistory
+<br>
 Return:
 ```sh
 {"winner": "Alex", "number_of_rounds": 117, "number_of_war_rounds": 7}
 ```
 Example with history (you can click it to run): http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory
+<br>
 Return:
 ```sh
 #since it show the full history of the game, it is very long output, here I only show the top several lines.
 {"winner": "Alex", "number_of_rounds": 735, "number_of_war_rounds": 41, "game_history": {"0": {"round_num": 0, "Alex": "black-clubs_5->black-clubs_2->black-clubs_A....", "Iris": "black-clubs_4->black-clubs_6->red-hearts_4->black-spades_8->red-diamonds_J->black-spades_k->red-hearts_k->red-diamonds ...}
 ```
 
-Example without history: http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory
+Example without history: http://54.201.247.15/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory 
+<br>
 Return:
 ```sh
 {"winner": "Alex", "number_of_rounds": 117, "number_of_war_rounds": 7}
@@ -31,6 +34,7 @@ Return:
 http://54.201.247.15/lifetimewin/v1/username/<str:player name>
 ```
 Example: http://54.201.247.15/lifetimewin/v1/username/Iris
+<br>
 Example Return:
 ```sh
 {"username": "Iris", "number_of_wins": 1136}
@@ -42,6 +46,7 @@ Example Return:
 http://54.201.247.15/simulations/v1/usernamex/<str:player name>/usernamey/<str:player name>/<int:number of simulation to run>
 ```
 Example: http://54.201.247.15:8000/simulations/v1/usernamex/Alex/usernamey/Iris/10
+<br>
 Example Return:
 ```sh
 [{"winner": "Alex", "number_of_rounds": 147, "number_of_war_rounds": 11}, {"winner": "Iris", "number_of_rounds": 127, "number_of_war_rounds": 5}, {"winner": "Alex", "number_of_rounds": 494, "number_of_war_rounds": 28}, {"winner": "Alex", "number_of_rounds": 363, "number_of_war_rounds": 23}, {"winner": "Iris", "number_of_rounds": 174, "number_of_war_rounds": 12}, {"winner": "Iris", "number_of_rounds": 798, "number_of_war_rounds": 52}, {"winner": "Iris", "number_of_rounds": 1265, "number_of_war_rounds": 79}, {"winner": "Alex", "number_of_rounds": 186, "number_of_war_rounds": 22} ...]
@@ -55,6 +60,7 @@ Imagine you want to do some analysis on the simulations result for two players, 
 http://54.201.247.15:8000/visualization/v1/usernamex/<str:player name>/usernamey/<str:player name>
 ```
 Example: http://54.201.247.15:8000/visualization/v1/usernamex/Alex/usernamey/Iris
+<br>
 Example Return: a page with interactive plots and chart
 ![](analysis_portal.png)
 
@@ -99,10 +105,10 @@ If time allows, I will implement a more robust production-level autoscalling-ena
 ![](ideal_structure.png)
 
 Other Improvements could be made:
-- I can have better database design for storing game history
+- I can have better database design for storing game history.
  Currently the history of each simulation is recorded by using long strings to represent the card deck of each player. This obviously violate the third normal form of database design. There is much better way to design the table for shorter query time and less space consumption.
-- I can implement interactive UI that integrate existing Plotly visualization using React framework
+- I can implement interactive UI that integrate existing Plotly visualization using React framework.
 - At this moment, the service is using the Django development server. For production ready, I will configure Nginx server. 
-- Add logs and error handling
-- Add script for create AWS instances programmatically and Dockerfile/ Helm Charts (Kubernete) for deploying the service
+- Add logs and error handling mechanism.
+- Add script for create AWS instances programmatically and Dockerfile/ Helm Charts (Kubernete) for deploying the service.
 ##### Thank you for reading, and feel free to contact me via yifanwu3@cs.cmu.edu if you have any question
