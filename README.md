@@ -56,16 +56,16 @@ http://54.201.247.15:8000/visualization/v1/usernamex/<str:player name>/usernamey
 ```
 Example: http://54.201.247.15:8000/visualization/v1/usernamex/Alex/usernamey/Iris
 Example Return: a page with interactive plots and chart
-Picture
+![](analysis_portal.png)
 
 ## Error Handling
-Due to time limitation, I am not able to set up all cases for error handling. But I set up one error handling as an example:
+Due to time limitation, I am not able to set up all cases for error handling. But I set up one error handling example.
 
 Imagine Alex and Iris are playing the game, and they are assigned to exactly the same card in the same order
 Using only 8 cards in total as an example:
 -Alex's deck : 2, 3, 4, A
 -Iris's deck : 2, 3, 4, A
-They will enter the war, and run out of cards, so that the game has no result. In this case:
+They will enter the war, and the players run out of cards, but the game has no result. In this case:
 ```sh
 # define an new exception
 class OutOfCardError(Exception): pass
@@ -77,9 +77,8 @@ try:
 except OutOfCardError:
     return HttpResponse("Game Simulation Failed: run out of cards", status=204)
 ```
-In this case
 ## Run the Framework locally
-Currently, the service is already deployed at the AWS Lightsail and you can test using above links without install locally
+Currently, the service is already deployed at the AWS Lightsail and you can test using above links without install local iustallation
 For running locally, following these steps:
 ```sh
 pip install pandas statsmodel
@@ -93,14 +92,17 @@ python manage.py migrate game_simulator
 python manage.py runserver
 ```
 ## Current Design and Future Improvement (that I wish that I have time to make)
-Due to time/budget limitation, I choose to deploy my service using AWS Lightsail, which is a great tool for quick prototyping and deployment, but not meant for scalable production. 
+Due to time/budget limitation, I have to deploy my service using AWS Lightsail, which is a great tool for quick prototyping and deployment, but not meant for scalable production. 
+![](current_structure.png)
 
-If time allows, I will implement a production-level autoscalling-enabled cloud service, which will utilize EC2 instances from AWS.
+If time allows, I will implement a more robust production-level autoscalling-enabled cloud service, which can utilize EC2 instances from AWS. SQLite can be replaced by MySQL or PostgreSQL:
+![](ideal_structure.png)
 
 Other Improvements could be made:
 - I can have better database design for storing game history
  Currently the history of each simulation is recorded by using long strings to represent the card deck of each player. This obviously violate the third normal form of database design. There is much better way to design the table for shorter query time and less space consumption.
 - I can implement interactive UI that integrate existing Plotly visualization using React framework
 - At this moment, the service is using the Django development server. For production ready, I will configure Nginx server. 
-
+- Add logs and error handling
+- Add script for create AWS instances programmatically and Dockerfile/ Helm Charts (Kubernete) for deploying the service
 ##### Thank you for reading, and feel free to contact me via yifanwu3@cs.cmu.edu if you have any question
