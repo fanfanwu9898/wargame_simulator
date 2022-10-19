@@ -7,7 +7,7 @@ http://54.201.247.15:8000/simulation/v1/usernamex/<str:player name>/usernamey/<s
 #or get result with the game history
 http://54.201.247.15:8000/simulation/v1/usernamex/<str:player name>/usernamey/<str:player name>/showhistory
 ```
-Example without history (you can click it to experiment): http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/noshowhistory
+Example without history (you can copy it to a browser to run or using curl): http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/noshowhistory
 <br>
 Return:
 ```sh
