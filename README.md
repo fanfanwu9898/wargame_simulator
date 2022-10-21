@@ -21,13 +21,6 @@ Return:
 {"winner": "Alex", "number_of_rounds": 735, "number_of_war_rounds": 41, "game_history": {"0": {"round_num": 0, "Alex": "black-clubs_5->black-clubs_2->black-clubs_A....", "Iris": "black-clubs_4->black-clubs_6->red-hearts_4->black-spades_8->red-diamonds_J->black-spades_k->red-hearts_k->red-diamonds ...}
 ```
 
-Example without history: http://54.201.247.15:8000/simulation/v1/usernamex/Alex/usernamey/Iris/showhistory 
-<br>
-Return:
-```sh
-{"winner": "Alex", "number_of_rounds": 117, "number_of_war_rounds": 7}
-```
-
 ### Endpoint to get lifetime wins for each player
 ```sh
 http://54.201.247.15:8000/lifetimewin/v1/username/<str:player name>
